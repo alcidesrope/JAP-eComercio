@@ -6,6 +6,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
+  <meta name="google-signin-client_id"
+    content="398538869046-lkfjb83r7mfmucckbhmbsnig6hms2bn6.apps.googleusercontent.com.apps.googleusercontent.com">
   <title>eMercado - Todo lo que busques está aquí</title>
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
@@ -13,41 +15,89 @@
   <!-- Bootstrap core CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/ef7b22a168.js" crossorigin="anonymous"></script>
   <style>
-    html, body{
-      height: 100%;
-    }
-
+    html,
     body {
-      display: -ms-flexbox;
-      display: flex;
-      -ms-flex-align: center;
-      align-items: center;
-      padding-top: 40px;
-      padding-bottom: 40px;
-      background-color: #f5f5f5;
+      height: 100%;
+      width: 100%;
+      /*background: #da4453; /* fallback for old browsers */
+      /*background: -webkit-linear-gradient(to right, #da4453, #89216b); /* Chrome 10-25, Safari 5.1-6 */
+      /*background: linear-gradient(to right, #da4453, #89216b);*/
+      font-family: Arial, Helvetica, sans-serif;
+      background-image: url("img/web.jpg");
     }
 
-    .signin {
-      width: 100%;
-      max-width: 330px;
-      padding: 15px;
-      margin: auto;
+    #lcontra {
+      padding-top: 10px;
+    }
+
+    #info {
+      display: none;
+      background: #f1f1f1;
+      color: #000;
+      position: relative;
+      padding: 20px;
+      margin-top: 10px;
+    }
+
+    #info p {
+      padding: 10px 35px;
+      font-size: 18px;
+    }
+
+    /* Add a green text color and a checkmark when the requirements are right */
+    .valid {
+      color: green;
+    }
+
+    .valid:before {
+      position: relative;
+      left: -35px;
+      content: "✔";
+    }
+
+    /* Add a red text color and an "x" when the requirements are wrong */
+    .invalid {
+      color: red;
+    }
+
+    .invalid:before {
+      position: relative;
+      left: -35px;
+      content: "✖";
     }
   </style>
 </head>
 
-<body class="text-center">
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 1 (Fecha de entrega: 16/08/2020) -> Punto 3 y 4.</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+<body class="row m-0 bg-primary justify-content-center align-items-center vh-100">
+  <div class="col-sm-4">
+    <div class="card text-center">
+      <img src="img/login.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h2>Bienvenid<i class="fas fa-at"></i></h2>
+        <hr>
+        <label for="username">Correo:</label>
+        <input type="text" class="form-control" name="username" id="usrname" placeholder="Ingrese su correo">
+        <div></div>
+        <label for="contra" id="lcontra">Contraseña:</label>
+        <input type="password" class="form-control" name="contra" id="psw" placeholder="Contraseña">
+        <div></div>
+        <hr>
+        <label for="recordar">Recordarme:</label>
+        <input type="checkbox" name="recordar" id="remember_me">
+        <div></div>
+        <button type="submit" class="btn btn-primary" id="boton"><i class="fas fa-sign-in-alt"></i>
+          Ingresar</button>
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+      </div>
+      <div id="info"></div>
     </div>
   </div>
-
+  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
   <script src="js/init.js"></script>
   <script src="js/login.js"></script>
 </body>
+
 </html>
