@@ -10,8 +10,13 @@ document.addEventListener("DOMContentLoaded", function (e) {
     if(myInputUsr.value == "" && myInputPsw.value == ""){      
       myInputUsr.style.border = "2px solid red";
       myInputPsw.style.border = "2px solid red";  
-      info.innerHTML="asdasdas";
-      info.style.fontSize = "12px";  
+      document.getElementById("infoUser").innerHTML="Debe ingresar un correo";
+      document.getElementById("infoUser").style.fontSize = "12px";  
+      document.getElementById("infoUser").style.fontSize = "12px";
+      document.getElementById("infoUser").style.color = "red";
+      document.getElementById("infoPsw").innerHTML="Debe ingresar una contraseña";
+      document.getElementById("infoPsw").style.fontSize = "12px";  
+      document.getElementById("infoPsw").style.color = "red";
       myInputUsr.onblur = function() {
         myInputUsr.style.border = "2px solid red";
       }
@@ -23,7 +28,10 @@ document.addEventListener("DOMContentLoaded", function (e) {
       myInputUsr.style.border = "2px solid red"; 
       //alert("Debe ingresar un correo");
       myInputPsw.style.border = "1px solid gray"; 
-      info.innerHTML="asdasdas";
+      document.getElementById("infoUser").innerHTML="Debe ingresar un correo";
+      document.getElementById("infoUser").style.fontSize = "12px"; 
+      document.getElementById("infoUser").style.color = "red";
+      document.getElementById("infoPsw").innerHTML="";
       info.style.fontSize = "12px";  
       myInputUsr.onblur = function() {
         myInputUsr.style.border = "2px solid red";
@@ -32,16 +40,20 @@ document.addEventListener("DOMContentLoaded", function (e) {
       myInputPsw.style.border = "2px solid red";
       //alert("Debe ingresar una contraseña");
       myInputUsr.style.border = "1px solid gray";
-      info.innerHTML="asdasdas";
-      info.style.fontSize = "12px";  
+      document.getElementById("infoPsw").innerHTML="Debe ingresar una contraseña";
+      document.getElementById("infoPsw").style.fontSize = "12px";
+      document.getElementById("infoUser").innerHTML="";
+      document.getElementById("infoPsw").style.color = "red"; 
       myInputPsw.onblur = function() {
         myInputPsw.style.border = "2px solid red";
       } 
     } else if(!ValidateEmail(myInputUsr)){
       myInputPsw.style.border = "1px solid gray";
       myInputUsr.style.border = "2px solid red"; 
-      info.innerHTML="asdasdas";
-      info.style.fontSize = "12px";  
+      document.getElementById("infoUser").innerHTML="Debe ingresar un correo valido";
+      document.getElementById("infoUser").style.fontSize = "12px";
+      document.getElementById("infoUser").style.color = "red";
+      document.getElementById("infoPsw").innerHTML="";
       myInputUsr.onblur = function() {
         myInputUsr.style.border = "2px solid red";
       } 

@@ -79,9 +79,11 @@
         <hr>
         <label for="username">Correo:</label>
         <input type="text" class="form-control" name="username" id="usrname" placeholder="Ingrese su correo">
+        <p id="infoUser"></p>
         <div></div>
         <label for="contra" id="lcontra">Contraseña:</label>
         <input type="password" class="form-control" name="contra" id="psw" placeholder="Contraseña">
+        <p id="infoPsw"></p>
         <div></div>
         <hr>
         <label for="recordar">Recordarme:</label>
@@ -91,7 +93,6 @@
           Ingresar</button>
         <div class="g-signin2 text-center data-onsuccess="onSignIn"></div>
       </div>
-      <div id="info"></div>
     </div>
   </div>
   <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
