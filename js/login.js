@@ -59,6 +59,10 @@ document.addEventListener("DOMContentLoaded", function (e) {
       } 
     }else {
       index();
+      function mySave() {
+        var userName = document.getElementById("infoUser").value;
+        localStorage.setItem("userName", userName);
+      }
     }
   })
   myInputUsr.onfocus = function() {
@@ -86,4 +90,5 @@ document.addEventListener("DOMContentLoaded", function (e) {
     console.log('Image URL: ' + profile.getImageUrl());
     console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
   }
+  
 });
