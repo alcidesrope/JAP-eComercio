@@ -59,12 +59,13 @@ document.addEventListener("DOMContentLoaded", function (e) {
       } 
     }else {
       index();
-      function mySave() {
-        var userName = document.getElementById("infoUser").value;
-        localStorage.setItem("userName", userName);
-      }
+      usuario();
     }
   })
+  function usuario() {
+    var userName = document.getElementById("infoUser").value;
+    localStorage.setItem("userName", myInputUsr.value);
+  }
   myInputUsr.onfocus = function() {
     myInputUsr.style.border = "1px solid gray";
   }
