@@ -2,5 +2,10 @@
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {
-
+    function logearse(){
+        if(localStorage.getItem("userName") == null){
+          window.location.href = "login.html";
+        }
+      }  
+    logearse();
 });

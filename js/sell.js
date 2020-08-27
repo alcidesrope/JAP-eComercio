@@ -146,4 +146,10 @@ document.addEventListener("DOMContentLoaded", function(e){
         if (e.preventDefault) e.preventDefault();
             return false;
     });
+    function logearse(){
+        if(localStorage.getItem("userName") == null){
+          window.location.href = "login.html";
+        }
+      }  
+    logearse();
 });

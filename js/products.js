@@ -134,4 +134,10 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
         showProductsList();
     });
+    function logearse(){
+        if(localStorage.getItem("userName") == null){
+          window.location.href = "login.html";
+        }
+      }  
+    logearse();
 });

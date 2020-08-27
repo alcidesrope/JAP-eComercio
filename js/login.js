@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     }else {
       index();
       usuario();
-    }
+    } 
   })
   function usuario() {
     var userName = document.getElementById("infoUser").value;

@@ -23,6 +23,12 @@ function showImagesGallery(array){
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
+    function logearse(){
+        if(localStorage.getItem("userName") == null){
+          window.location.href = "login.html";
+        }
+      }  
+    logearse();
     getJSONData(CATEGORY_INFO_URL).then(function(resultObj){
         if (resultObj.status === "ok")
         {

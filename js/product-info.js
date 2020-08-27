@@ -37,4 +37,10 @@ document.addEventListener("DOMContentLoaded", function(e){
             productCostHTML.innerHTML = product.cost;
         }
     });
+    function logearse(){
+        if(localStorage.getItem("userName") == null){
+          window.location.href = "login.html";
+        }
+      }  
+    logearse();
 });
