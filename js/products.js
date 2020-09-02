@@ -5,6 +5,8 @@ var minCost = undefined;
 var maxCost = undefined;
 var currentProductsArray = [];
 var currentSortCriteria = undefined;
+var filtro = document.getElementById("filtro");
+var cflitro = "";
 
 function sortProducts(criteria, array){
     let result = [];
@@ -39,11 +41,17 @@ function sortProducts(criteria, array){
 function showProductsList() {
 
     let htmlContentToAppend = "";
+    let filtrov = filtro.value.toLowerCase();
     for (let i = 0; i < currentProductsArray.length; i++) {
         let product = currentProductsArray[i];
+        let productN = product.name.toLowerCase().indexOf(filtrov);
+        let productD = product.description.toLowerCase().indexOf(filtrov);
+        let serch = document.getElementById("filtro").value.toLowerCase();
+        console.log(serch);
 
         if (((minCost == undefined) || (minCost != undefined && product.cost >= minCost)) &&
-            ((maxCost == undefined) || (maxCost != undefined && product.cost <= maxCost))) {
+            ((maxCost == undefined) || (maxCost != undefined && product.cost <= maxCost)) &&
+            (filtrov == undefined || productN > -1 || productDescription > -1)){
 
             htmlContentToAppend += `
             <a href="product-info.html" class="list-group-item list-group-item-action">
@@ -60,6 +68,9 @@ function showProductsList() {
                     </div>
                 </div>
             </a>
+            <div class="notice notice-lg">
+                <strong>Big notice</strong> notice-lg
+            </div>
             `
         }
     }
@@ -140,4 +151,5 @@ document.addEventListener("DOMContentLoaded", function (e) {
         }
       }  
     logearse();
+    filtro.addEventListener("keyup", showListaProductos);
 });
