@@ -63,7 +63,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
     } 
   })
   function usuario() {
-    var userName = document.getElementById("infoUser").value;
     localStorage.setItem("userName", myInputUsr.value);
   }
   myInputUsr.onfocus = function() {

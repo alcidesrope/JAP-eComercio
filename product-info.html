@@ -13,7 +13,10 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
-  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
+    <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
 </head>
 
 <body>
@@ -33,7 +36,7 @@
       </div>
     </div>
   </nav>
-  <div class="container mt-5">
+  <div id="infoProduc" class="container mt-5">
     <div class="text-center p-4">
       <h2>Descripción de producto</h2>
       <p class="lead">Encontrarás aquí toda la información del producto seleccionado.</p>
@@ -70,26 +73,53 @@
       </dd>
     </dl>
     <a type="button" class="btn btn-light btn-lg btn-block" href="products.html">Ver productos</a>
+    <h2>Productos relacionado</h2>
+    <div class="row text-center text-lg-left pt-2" id="relatedProducts">
+    </div>
   </div>
-  <footer class="text-muted">
+
+  <footer id="footer" class="text-muted">
     <div class="container">
-      <p class="float-right">
         <a href="#">Volver arriba</a>
       </p>
       <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
       <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
     </div>
     <div class="container mt-5">
-      <h2>Comentarios</h2>        
-        <div class="row text-center text-lg-left pt-2" id="productComments"></div>
+      <h2>Comentarios</h2>
+      <div class="my-rating"></div>
+      <div class="row text-center text-lg-left pt-2" id="productComments"></div>
     </div>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-6"style="border-style: solid;">
+          <h2>Nuevo comentario:</h2>
+          <div class=" row">
+            <label for="usuario" style="margin-left: 3%;" >Nombre de usuario: </label>
+            <input type="text" name="usuario" id="usuario" placeholder="Ingrese usuario" style="margin: 1%;">
+          </div>
+          <div class="row">
+            <label for="rate" style="margin-left: 3%;">Puntuacion: </label>
+            <div id="rate" class="rate" name="rate">
+              <span id="one" class="fa fa-star" value = "1"></span>
+              <span id="two" class="fa fa-star" value = "2"></span>
+              <span id="three" class="fa fa-star" value = "3"></span>
+              <span id="four" class="fa fa-star" value = "4"></span>
+              <span id="five" class="fa fa-star" value = "5"></span>
+            </div>
+          </div>
+          <div class="row">
+            <label for="comentario" style="margin-left: 3%;">Comentario: </label>
+            <textarea id="comentario" name="comentarios" rows="5" cols="40" placeholder="Escribe aquí tu comentario" style="margin: 1%;"></textarea>
+          </div>
+          <button id="comentar" class="btn btn-primary" style="margin: 1%;">Comentar</button>
+        </div>
+      </div>
+    </div>
+
   </footer>
   <div id="spinner-wrapper">
     <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
     </div>
   </div>
   <script src="js/jquery-3.4.1.min.js"></script>
@@ -98,5 +128,4 @@
   <script src="js/product-info.js"></script>
   <script src="https://kit.fontawesome.com/ef7b22a168.js" crossorigin="anonymous"></script>
 </body>
-
 </html>

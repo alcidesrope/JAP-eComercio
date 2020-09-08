@@ -68,9 +68,6 @@ function showProductsList() {
                     </div>
                 </div>
             </a>
-            <div class="notice notice-lg">
-                <strong>Big notice</strong> notice-lg
-            </div>
             `
         }
     }

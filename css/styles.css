@@ -139,3 +139,10 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+.unchecked
+{
+color:gray;
+}
+.rate{
+  color:gray;
+}
