@@ -213,18 +213,25 @@ document.addEventListener("DOMContentLoaded", function (e) {
                 for (j = 0; j < score; j++) {
                     document.getElementsByTagName("em")[i].getElementsByTagName("span")[j].classList.add("checked");
                 };
+                limpiar(document.getElementById("comentario"));
+                limpiar(document.getElementById("usuario"));
+                star1.classList.remove("checked");
+                star2.classList.remove("checked");
+                star3.classList.remove("checked");
+                star4.classList.remove("checked");
+                star5.classList.remove("checked");
+
             };
         } else {
             alert("Debe ingresar un usuario y una puntuacion")
         };
 
-        limpiar(document.getElementById("comentario"));
-        limpiar(document.getElementById("usuario"));
+
     });
 
-function limpiar (input){
-    input.value = "";
-};
+    function limpiar(input) {
+        input.value = "";
+    };
 
 });
 
