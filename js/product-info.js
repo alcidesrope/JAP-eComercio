@@ -197,12 +197,17 @@ document.addEventListener("DOMContentLoaded", function (e) {
     star5.onblur = function () {
         star5.classList.remove("checked");
     };
-    document.getElementById("comentar").addEventListener("click", function () {
+    document.getElementById("usuarioComent").innerHTML = `<strong>` + localStorage.getItem("userName") + `</strong>`;
+    document.getElementById("comentar").addEventListener("click", function () {   
+        var date = new Date();  
+        var fecha = "";  
+        fecha = date.getFullYear() +"-"+ date.getMonth() +"-"+ date.getDay() +" "+ date.getHours() +":"+ date.getMinutes() + ":" + date.getSeconds(); 
         var descri = document.getElementById("comentario").value;
-        var user = document.getElementById("usuario").value;
+        var user = localStorage.getItem("userName");
         coment.description = descri;
         coment.user = user;
-        if (user != "" && coment.score != undefined) {
+        coment.dateTime = fecha;
+        if (coment.score != undefined && coment.description != "") {
             comments.push(coment);
             console.log(coment);
             console.log(comments)
@@ -214,7 +219,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
                     document.getElementsByTagName("em")[i].getElementsByTagName("span")[j].classList.add("checked");
                 };
                 limpiar(document.getElementById("comentario"));
-                limpiar(document.getElementById("usuario"));
                 star1.classList.remove("checked");
                 star2.classList.remove("checked");
                 star3.classList.remove("checked");
@@ -223,7 +227,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
             };
         } else {
-            alert("Debe ingresar un usuario y una puntuacion")
+            alert("Debe ingresar una puntuacion y un comentario")
         };
 
 
