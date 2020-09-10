@@ -1,6 +1,7 @@
 var product = {};
 var nuevoComent = {};
 var comments = [];
+var user = [];
 
 function showProductInfo(array) {
 
@@ -61,9 +62,18 @@ function showComments(array) {
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
-document.addEventListener("DOMContentLoaded", function (e) {
-    getJSONData(PRODUCT_INFO_URL).then(function (resultObj) {
+document.addEventListener("DOMContentLoaded", function (e) {    
+    var idURL = window.location.search;
+    var regex = /\d+/g;
+    var string = idURL;
+    var matches = string.match(regex);
+    var url = PRODUCTS_AWS_URL + matches[0];
+
+    console.log(matches)
+
+    getJSONData(url).then(function (resultObj) {
         if (resultObj.status === "ok") {
+
             product = resultObj.data;
 
             let productNameHTML = document.getElementById("productName");
@@ -197,15 +207,20 @@ document.addEventListener("DOMContentLoaded", function (e) {
     star5.onblur = function () {
         star5.classList.remove("checked");
     };
-    document.getElementById("usuarioComent").innerHTML = `<strong>` + localStorage.getItem("userName") + `</strong>`;
-    document.getElementById("comentar").addEventListener("click", function () {   
-        var date = new Date();  
-        var fecha = "";  
-        fecha = date.getFullYear() +"-"+ date.getMonth() +"-"+ date.getDay() +" "+ date.getHours() +":"+ date.getMinutes() + ":" + date.getSeconds(); 
+    const correo = localStorage.getItem("userName");
+    var i = 0;
+    while (correo[i] != "@") {
+        user += correo[i];
+        i++;
+    };
+    document.getElementById("usuarioComent").innerHTML = `<strong>` + user.toUpperCase() + `</strong>`;
+    document.getElementById("comentar").addEventListener("click", function () {
+        var date = new Date();
+        var fecha = "";
+        fecha = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDay() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
         var descri = document.getElementById("comentario").value;
-        var user = localStorage.getItem("userName");
         coment.description = descri;
-        coment.user = user;
+        coment.user = user.toUpperCase();
         coment.dateTime = fecha;
         if (coment.score != undefined && coment.description != "") {
             comments.push(coment);

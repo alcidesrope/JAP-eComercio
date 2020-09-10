@@ -54,7 +54,7 @@ function showProductsList() {
             (filtrov == undefined || productN > -1 || productDescription > -1)){
 
             htmlContentToAppend += `
-            <a href="product-info.html" class="list-group-item list-group-item-action">
+            <a href="product-info.html?id=?`+ product.id +`" class="list-group-item list-group-item-action">
                 <div class="row">
                     <div class="col-3">
                         <img src="` + product.imgSrc + `" class="img-thumbnail">
@@ -69,6 +69,9 @@ function showProductsList() {
                 </div>
             </a>
             `
+        }
+        function idProduct(){
+            localStorage.setItem("i", "product.id")
         }
     }
 
@@ -92,8 +95,9 @@ function sortAndShowProducts(sortCriteria, productsArray){
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {
-    getJSONData(PRODUCTS_URL).then(function (resultObj) {
+    getJSONData(PRODUCTS_AWS_URL).then(function (resultObj) {
         if (resultObj.status === "ok") {
+            console.log(resultObj.data)
             sortAndShowProducts(ORDER_ASC_BY_COST, resultObj.data);
         }
     });
