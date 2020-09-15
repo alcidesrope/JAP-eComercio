@@ -26,12 +26,13 @@
       <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
       <button class="btn btn-light dropdown-toggle" type="button" id="userName" data-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false">
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" id="perfil" href="cart.html">Mi carrito</a>
         <a class="dropdown-item" id="perfil" href="my-profile.html">Perfil</a>
+        <hr>
         <a class="dropdown-item" id="cerrarSesion" href="#">Cerrar sesión</a>
       </div>
     </div>
@@ -72,6 +73,19 @@
         </div>
       </dd>
     </dl>
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner" id="imagenesInsert">
+
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
     <a type="button" class="btn btn-light btn-lg btn-block" href="products.html">Ver productos</a>
     <h2>Productos relacionado</h2>
     <div class="row text-center text-lg-left pt-2" id="relatedProducts">
@@ -79,12 +93,6 @@
   </div>
 
   <footer id="footer" class="text-muted">
-    <div class="container">
-      <a href="#">Volver arriba</a>
-      </p>
-      <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
-      <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
-    </div>
     <div class="container mt-5">
       <h2>Comentarios</h2>
       <div class="my-rating"></div>
@@ -113,6 +121,12 @@
         </div>
         <button id="comentar" class="btn btn-primary" style="margin: 2%;">Comentar</button>
       </div>
+    </div>
+    <div class="container">
+      <a href="#">Volver arriba</a>
+      </p>
+      <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
+      <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
     </div>
 
   </footer>

@@ -51,10 +51,10 @@ function showProductsList() {
 
         if (((minCost == undefined) || (minCost != undefined && product.cost >= minCost)) &&
             ((maxCost == undefined) || (maxCost != undefined && product.cost <= maxCost)) &&
-            (filtrov == undefined || productN > -1 || productDescription > -1)){
+            (filtrov == undefined || productN > -1 || productD > -1)){
 
             htmlContentToAppend += `
-            <a href="product-info.html?id=?`+ product.id +`" class="list-group-item list-group-item-action">
+            <a href="product-info.html" class="list-group-item list-group-item-action">
                 <div class="row">
                     <div class="col-3">
                         <img src="` + product.imgSrc + `" class="img-thumbnail">
@@ -95,7 +95,7 @@ function sortAndShowProducts(sortCriteria, productsArray){
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {
-    getJSONData(PRODUCTS_AWS_URL).then(function (resultObj) {
+    getJSONData(PRODUCTS_URL).then(function (resultObj) {
         if (resultObj.status === "ok") {
             console.log(resultObj.data)
             sortAndShowProducts(ORDER_ASC_BY_COST, resultObj.data);
@@ -152,5 +152,5 @@ document.addEventListener("DOMContentLoaded", function (e) {
         }
       }  
     logearse();
-    filtro.addEventListener("keyup", showListaProductos);
+    filtro.addEventListener("keyup", showProductsList);
 });

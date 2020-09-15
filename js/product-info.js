@@ -21,6 +21,26 @@ function showProductInfo(array) {
         document.getElementById("productImagesGallery").innerHTML = htmlContentToAppend;
     }
 }
+
+function showProductImagen(array) {
+
+    let htmlContentToAppend = "";
+
+    for (let i = 0; i < array.length; i++) {   
+             
+        let imageSrc = array[i];        
+        var nodeDiv = document.createElement("div");
+        nodeDiv.setAttribute("class", "carousel-item");
+        nodeDiv.setAttribute("id", imageSrc);
+        var nodeImg = document.createElement("img");
+        nodeImg.className = "d-block w-100";
+        nodeImg.setAttribute("src", imageSrc);
+        nodeDiv.appendChild(nodeImg);
+        document.getElementById("imagenesInsert").appendChild(nodeDiv);
+    }
+    document.getElementById(array[0]).className += " active";
+    
+}
 function showComments(array) {
     let htmlContentToAppend = "";
     for (let i = 0; i < array.length; i++) {
@@ -62,16 +82,20 @@ function showComments(array) {
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
-document.addEventListener("DOMContentLoaded", function (e) {    
-    var idURL = window.location.search;
+document.addEventListener("DOMContentLoaded", function (e) {
+    
+    $("#carouselExampleControls").carousel();
+    /* var idURL = window.location.search;
+    console.log(idURL);
+    console.log(window.location)
     var regex = /\d+/g;
     var string = idURL;
     var matches = string.match(regex);
     var url = PRODUCTS_AWS_URL + matches[0];
 
-    console.log(matches)
+    console.log(matches) */
 
-    getJSONData(url).then(function (resultObj) {
+    getJSONData(PRODUCT_INFO_URL).then(function (resultObj) {
         if (resultObj.status === "ok") {
 
             product = resultObj.data;
@@ -88,9 +112,11 @@ document.addEventListener("DOMContentLoaded", function (e) {
             productCategoryHTML.innerHTML = product.category;
             productSoldCountHTML.innerHTML = product.soldCount;
 
-            showProductInfo(product.images);
+            showProductImagen(product.images);
+            
         }
     });
+    
     getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function (resultObj) {
         if (resultObj.status === "ok") {
             comments = resultObj.data;
@@ -114,7 +140,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
             let htmlContentToAppend = "";
             for (let i = 0; i < rprod.length; i++) {
                 var prod = products[rprod[i]];
-                console.log(prod);
                 htmlContentToAppend += `
                 <a href="product-info.html" class="list-group-item list-group-item-action">
                     <div class="row">
