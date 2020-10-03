@@ -84,6 +84,9 @@ function showComments(array) {
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {
     
+    $(document).ready(function(){
+        $('[data-toggle="popover"]').popover();   
+    });
     $("#carouselExampleControls").carousel();
     /* var idURL = window.location.search;
     console.log(idURL);
@@ -99,6 +102,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
         if (resultObj.status === "ok") {
 
             product = resultObj.data;
+            console.log(resultObj)
+            console.log(product)
 
             let productNameHTML = document.getElementById("productName");
             let productDescriptionHTML = document.getElementById("productDescription");
@@ -120,6 +125,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function (resultObj) {
         if (resultObj.status === "ok") {
             comments = resultObj.data;
+            console.log(comments)
             showComments(comments);
             for (let i = 0; i < comments.length; i++) {
                 let comentario = comments[i];

@@ -40,7 +40,8 @@
       <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <button class="btn btn-light dropdown-toggle" type="button" id="userName" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <button class="btn btn-light dropdown-toggle" type="button" id="userName" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <a class="dropdown-item" id="perfil" href="cart.html">Mi carrito</a>
@@ -51,27 +52,98 @@
     </div>
   </nav>
   <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 5 (Fecha de entrega: 11/10/2020) y Entrega 6 (Fecha de entrega: 25/10/2020).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+    <div class="row align-items-center justify-content-md-center">
+      <div class="div col-8">
+        <div class="card">
+          <div class="card-header text-center">
+            <h2>Carrito de compras</h2>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Articulos a comprar</h3>
+            <div class="div table-responsive">
+              <table class="table" id="tablaCarrito">
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Costo</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Subtotal</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+                <tfoot>
+
+                </tfoot>
+              </table>
+              <hr>
+              <h3>Costos</h3>
+              <div class="col-12 ">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col">
+                        <h5>Subtotal(UYU)</h5>
+                        <p class="text-secondary" style="margin-bottom: 0px;">Costo unitario del producto por cantidad
+                        </p>
+                      </div>
+                      <div class="col-md-3">
+                        $<input id="subtotal" max="100" size="8" readonly ></input>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col">
+                        <h5>Costo de envio</h5>
+                        <p class="text-secondary" style="margin-bottom: 0px;">Segun el tipo de envio</p>
+                      </div>
+                      <div class="col-md-2">
+                        <span id="costoenvio"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col">
+                        <h5>Total($)</h5>
+                        <p class="text-secondary" style="margin-bottom: 0px;">Costo unicario del producto por cantidad
+                        </p>
+                      </div>
+                      <div class="col-md-2">
+                        <span id="total"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer text-muted">
+              <a href="#" class="btn btn-primary">Finalizar compra</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  <div id="spinner-wrapper">
-    <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
+    <div id="spinner-wrapper">
+      <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
-  </div>
-  <script src="js/jquery-3.4.1.min.js"></script>
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/dropzone.js"></script>
-  <script src="js/init.js"></script>
-  <script src="js/cart.js"></script>
-  <script src="https://kit.fontawesome.com/ef7b22a168.js" crossorigin="anonymous"></script>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/dropzone.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="https://kit.fontawesome.com/ef7b22a168.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
