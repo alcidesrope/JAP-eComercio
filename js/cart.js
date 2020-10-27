@@ -308,7 +308,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     var cre = document.getElementById("credito");
     var tra = document.getElementById("transferencia");
     var efe = document.getElementById("efectivo");
-    if(!stan.checked && !exp.checked && !prem.checked && !cre.checked && !tra.checked && !efe.checked) {
+    if((!stan.checked && !exp.checked && !prem.checked) || (!cre.checked && !tra.checked && !efe.checked)) {
       swal("Falta metodo de envio y/o forma de pago!", "Debe seleccionar!", "error")
     } else {
       swal("Perfecto!", "Compra realizada!", "success")
@@ -324,6 +324,5 @@ document.addEventListener("DOMContentLoaded", function (e) {
    }
    function validRed(){
     return ($("#redRed").val() == "vacio")
-   }
-  
+   }  
 });
