@@ -28,6 +28,7 @@
       }
     }
   </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous"></script>
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/dropzone.css" rel="stylesheet">
@@ -77,6 +78,27 @@
 
                 </tfoot>
               </table>
+
+              <hr>
+              <div class="row">
+                <div class="col">
+                  <h3>Forma de pago:</h3><button class="btn btn-primary" data-toggle="modal"
+                  data-target="#formadepagomodal">Seleccione forma de pago</button>
+                </div>
+                <div class="col">
+
+                </div>                
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col">
+                  <h3>Forma de envio:</h3><button class="btn btn-primary" data-toggle="modal"
+                  data-target="#metodoenviomodal">Seleccione metodo de envio</button>
+                </div>
+                <div class="col">
+                  <div id="datoEnvio"></div>
+                </div>                
+              </div>
               <hr>
               <h3>Costos</h3>
               <div class="col-12 ">
@@ -89,7 +111,7 @@
                         </p>
                       </div>
                       <div class="col-md-3">
-                        $<input id="subtotal" max="100" size="8" readonly ></input>
+                        $<input id="subtotal" max="100" size="8" readonly></input>
                       </div>
                     </div>
                   </div>
@@ -98,11 +120,11 @@
                   <div class="card-body">
                     <div class="row">
                       <div class="col">
-                        <h5>Costo de envio</h5>
+                        <h5>Costo de envio(UYU)</h5>
                         <p class="text-secondary" style="margin-bottom: 0px;">Segun el tipo de envio</p>
                       </div>
-                      <div class="col-md-2">
-                        <span id="costoenvio"></span>
+                      <div class="col-md-3">
+                        $<input id="costoenvio" max="100" size="8" size="8" value="0" readonly></input>
                       </div>
                     </div>
                   </div>
@@ -112,38 +134,96 @@
                     <div class="row">
                       <div class="col">
                         <h5>Total($)</h5>
-                        <p class="text-secondary" style="margin-bottom: 0px;">Costo unicario del producto por cantidad
+                        <p class="text-secondary" style="margin-bottom: 0px;">Costo unitario del producto por cantidad
                         </p>
                       </div>
-                      <div class="col-md-2">
-                        <span id="total"></span>
+                      <div class="col-md-3">
+                        $<input id="total" max="100" size="8" size="8" readonly></input>
                       </div>
+                      <span id="total"></span>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="card-footer text-muted">
-              <a href="#" class="btn btn-primary">Finalizar compra</a>
-            </div>
+          </div>
+          <div class="card-footer">
+            <a id="finalizarCompra" class="btn btn-primary active">Finalizar compra</a>
           </div>
         </div>
       </div>
     </div>
-    <div id="spinner-wrapper">
-      <div class="lds-ring">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+  </div>
+  <div id="spinner-wrapper">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <div class="modal fade" id="formadepagomodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Forma de pago:</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Seleccione una forma de pago:</p>
+          <input type="radio" id="credito" name="gender" value="credito">
+          <label for="credito">Tarjeta de crédito</label><br>
+          <input type="radio" id="transferencia" name="gender" value="transferencia">
+          <label for="transferencia">Transferencia bancaria</label><br>
+          <input type="radio" id="efectivo" name="gender" value="efectivo">
+          <label for="efectivo">Efectivo</label>
+          <hr>
+          <div id="datosPago"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button id="modpago" type="button" class="btn btn-primary">Aceptar </button>
+        </div>
       </div>
     </div>
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/dropzone.js"></script>
-    <script src="js/init.js"></script>
-    <script src="js/cart.js"></script>
-    <script src="https://kit.fontawesome.com/ef7b22a168.js" crossorigin="anonymous"></script>
+  </div>
+
+  <div class="modal fade" id="metodoenviomodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Forma de envío:</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Seleccione una forma de envío:</p>
+          <input type="radio" id="premium" name="envio" value="premium">
+          <label for="credito">Premium (2-5 días)</label><br>
+          <input type="radio" id="express" name="envio" value="express">
+          <label for="transferencia">Express (5-8 días)</label><br>
+          <input type="radio" id="standard" name="envio" value="standard">
+          <label for="efectivo">Standard (12 a 15 días)</label>
+          <hr>
+          <div id="alerEnvio"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button id="modenvio" type="button" class="btn btn-primary">Aceptar </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/dropzone.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="https://kit.fontawesome.com/ef7b22a168.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
