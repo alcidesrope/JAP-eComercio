@@ -1,72 +1,88 @@
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
-let product = [];
+var product = [];
+function totalSimple(array) {
+  var total = 0
+  if (!Array.isArray(array)) {
+    if (array.currency == "UYU")
+      total = array.unitCost * array.count
+    else {
+      total = array.unitCost * array.count * 40
+    }
+    return total
+  }
+}
+function subTotal(array) {
+  var total = 0
+  array.forEach(element => {
+    total += totalSimple(element)
+  })
+  return total
+}
+function borrarProduct(id) {
+  swal({
+    title: "Atención",
+    text: "Se borrará un elemento",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  })
+  .then((willDelete) => {
+    if (willDelete) {
+      product.splice(id,1);
+      let node = document.getElementById("tbody")
+      console.log(node)
+      node.querySelectorAll('*').forEach(n => n.remove());
+      showCartInfo(product);
+      swal("El item se ha eliminado satisfactoriamente", {
+        icon: "success",
+      });
+    } else {
+      swal("Ha cancelado la eliminacion.");
+    }
+  });
+  
+}
+function showCartInfo(array) {
+  let total = 0;
+  let htmlContentToAppend = "";
+  for (let i = 0; i < array.length; i++) {
+    let info = array[i];
+    if (info.currency == "USD") {
+      total += (info.count * info.unitCost) * 40;
+    } else {
+      total += info.count * info.unitCost;
+    }
+    htmlContentToAppend += `
+      <tr>
+          <td>
+            <img src="`+ info.src + `" alt="" width="30" height="30">
+          </td>
+          <td>`+ info.name + `</td>
+          <td>`+ info.unitCost + `</td>
+          <td>
+              <input cost="`+ info.unitCost + `" type="number" min="1" max="100" value="` + info.count + `">
+          </td>
+          <td class="total" curr="`+ info.currency + `">` + info.currency + ` <span>` + (info.count * info.unitCost) + `</span></td>
+          <td><i id="${i}" onclick="borrarProduct(` + i + `)" class="far fa-times-circle"></i></td>
+      </tr>
+      `
+  }
+  $("#tablaCarrito tbody").append(htmlContentToAppend);
+  /* document.getElementById("algo").innerHTML = htmlContentToAppend; */
+  $("#total").val(total);
+}
 document.addEventListener("DOMContentLoaded", function (e) {
   function logearse() {
     if (localStorage.getItem("userName") == null) {
       window.location.href = "login.html";
     }
   }
-  function totalSimple(array) {
-    var total = 0
-    if (!Array.isArray(array)) {
-      if (array.currency == "UYU")
-        total = array.unitCost * array.count
-      else {
-        total = array.unitCost * array.count * 40
-      }
-      return total
-    }
-  }
-  function subTotal(array) {
-    var total = 0
-    array.forEach(element => {
-      total += totalSimple(element)
-    })
-    return total
-  }
-  function borrar(id) {
-    delete product[id];
-    showCartInfo(product);
-  }
-  function showCartInfo(array) {
-    let total = 0;
-    let htmlContentToAppend = "";
-    for (let i = 0; i < array.length; i++) {
-      let info = array[i];
-      if (info.currency == "USD") {
-        total += (info.count * info.unitCost) * 40;
-      } else {
-        total += info.count * info.unitCost;
-      }
-      htmlContentToAppend += `
-        <tr>
-            <td>
-              <img src="`+ info.src + `" alt="" width="30" height="30">
-            </td>
-            <td>`+ info.name + `</td>
-            <td>`+ info.unitCost + `</td>
-            <td>
-                <input cost="`+ info.unitCost + `" type="number" min="1" max="100" value="` + info.count + `">
-            </td>
-            <td class="total" curr="`+ info.currency + `">` + info.currency + ` <span>` + (info.count * info.unitCost) + `</span></td>
-            <td><i id="${i}" onclick="borrar(${i})" class="borrar far fa-times-circle"></i></td>
-        </tr>
-        `
-    }
-    $("#tablaCarrito tbody").append(htmlContentToAppend);
-    $("#total").val(total);
-  }
-  $(".borrar").on('click', function () {
-    delete product[$(this).attr("id")]
-    showCartInfo(product);
-  })
   logearse();
   getJSONData("https://japdevdep.github.io/ecommerce-api/cart/654.json").then(function (resultObj) {
     if (resultObj.status === "ok") {
       product = resultObj.data.articles;
-      console.log(product)
       showCartInfo(product);
       var subtoto = document.getElementById("subtotal")
       subtoto.value = subTotal(product);
