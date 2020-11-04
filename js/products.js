@@ -54,9 +54,9 @@ function showProductsList() {
             (filtrov == undefined || productN > -1 || productD > -1)){
 
             htmlContentToAppend += `
-            <a href="product-info.html" class="list-group-item list-group-item-action">
+            <a href="product-info.html" class="col list-group-item list-group-item-action">
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col-12">
                         <img src="` + product.imgSrc + `" class="img-thumbnail">
                     </div>
                     <div class="col">

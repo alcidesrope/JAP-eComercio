@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0049)https://getbootstrap.com/docs/4.3/examples/album/ -->
+<!-- saved from url=(0049)https://getbootstrap.com/docs/4.3/examples/album/  -->
 <html lang="en">
 
 <head>
@@ -27,6 +27,37 @@
         font-size: 3.5rem;
       }
     }
+
+    .user-row {
+      margin-bottom: 14px;
+    }
+
+    .user-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .dropdown-user {
+      margin: 13px 0;
+      padding: 5px;
+      height: 100%;
+    }
+
+    .dropdown-user:hover {
+      cursor: pointer;
+    }
+
+    .table-user-information>tbody>tr {
+      border-top: 1px solid rgb(221, 221, 221);
+    }
+
+    .table-user-information>tbody>tr:first-child {
+      border-top: 0;
+    }
+
+
+    .table-user-information>tbody>tr>td {
+      border-top: 0;
+    }
   </style>
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
@@ -40,7 +71,8 @@
       <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <button class="btn btn-light dropdown-toggle" type="button" id="userName" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <button class="btn btn-light dropdown-toggle" type="button" id="userName" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <a class="dropdown-item" id="perfil" href="cart.html">Mi carrito</a>
@@ -51,11 +83,47 @@
     </div>
   </nav>
   <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 7 (Fecha de entrega: 8/11/202020) -> Punto 1 y 2.</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+    <div class="row">
+      <div class="col-3">
+        <img src="https://thispersondoesnotexist.com/image" alt="..." class="img-thumbnail">
+      </div>
+      <div class="col-6">
+        <div class="card border-success mb-6">
+          <div class="card-header bg-transparent border-success">Perfil  <button class="btn btn-primary" id="editarPerfil" style="float: right;"><i class="far fa-edit text-right"></i></button></div>
+          <div class="card-body text-success">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Nombre</span>
+              </div>
+              <input type="text" id="nombreUser" class="form-control" placeholder="Escriba su nombre" aria-label="Username"
+                aria-describedby="basic-addon1">
+            </div>
+
+            <div class="input-group mb-3">
+              <div class="input-group-append">
+                <span class="input-group-text" id="basic-addon2">Apellido</span>
+              </div>
+              <input type="text" class="form-control" placeholder="Escriba su apellido"
+                aria-label="Recipient's username" aria-describedby="basic-addon2">              
+            </div>
+
+            <label for="basic-url">Contacto:</label>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon3">Email</span>
+              </div>
+              <input type="text" class="form-control" id="basic-url" placeholder="Escriba su email" aria-describedby="basic-addon3">
+            </div>
+
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Cel</span>
+              </div>
+              <input type="text" class="form-control" placeholder="Escriba su numero telefonico" aria-label="Amount (to the nearest dollar)">
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <footer class="text-muted bg-light">

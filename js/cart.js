@@ -45,14 +45,14 @@ function borrarProduct(id) {
   
 }
 function showCartInfo(array) {
-  let total = 0;
+  let totalfor = 0;
   let htmlContentToAppend = "";
   for (let i = 0; i < array.length; i++) {
     let info = array[i];
     if (info.currency == "USD") {
-      total += (info.count * info.unitCost) * 40;
+      totalfor += (info.count * info.unitCost) * 40;
     } else {
-      total += info.count * info.unitCost;
+      totalfor += info.count * info.unitCost;
     }
     htmlContentToAppend += `
       <tr>
@@ -71,7 +71,7 @@ function showCartInfo(array) {
   }
   $("#tablaCarrito tbody").append(htmlContentToAppend);
   /* document.getElementById("algo").innerHTML = htmlContentToAppend; */
-  $("#total").val(total);
+  $("#total").val(totalfor);
 }
 document.addEventListener("DOMContentLoaded", function (e) {
   function logearse() {
@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
       subtoto.value = subTotal(product);
     }
   });
-
+function recalculo(){
   $('table').on('change', 'input', function () {
     var cant = $(this).val()
     var cost = $(this).attr("cost")
@@ -106,6 +106,10 @@ document.addEventListener("DOMContentLoaded", function (e) {
     $(this).closest('tr').children('td.total').children('span').text(to)
 
   });
+}
+
+recalculo();
+  
 
   document.getElementById("credito").addEventListener("change", function () {
     let htmlContentToAppend = "";
