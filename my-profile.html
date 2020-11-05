@@ -89,22 +89,29 @@
       </div>
       <div class="col-6">
         <div class="card border-success mb-6">
-          <div class="card-header bg-transparent border-success">Perfil  <button class="btn btn-primary" id="editarPerfil" style="float: right;"><i class="far fa-edit text-right"></i></button></div>
-          <div class="card-body text-success">
+          <div class="card-header bg-transparent border-success"><h2>Perfil</h2>  
+            <button class="btn btn-primary" id="editarPerfil" style="float: right;"><i class="far fa-edit text-right"></i></button>
+          </div>
+          <div id="carbody" class="card-body text-success">
+            <fieldset class="was-validated">
             <div class="input-group mb-3">
               <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">Nombre</span>
+                <span class="input-group-text" id="basic-addon1" >Nombre</span>
               </div>
-              <input type="text" id="nombreUser" class="form-control" placeholder="Escriba su nombre" aria-label="Username"
-                aria-describedby="basic-addon1">
+              <input readonly type="text" id="nombre" class="validar form-control" placeholder="Escriba su nombre" aria-label="Username"
+                aria-describedby="basic-addon1" required>
+                <div class="valid-feedback">Valido.</div>
+                <div class="invalid-feedback">Invalido.</div>
             </div>
 
             <div class="input-group mb-3">
               <div class="input-group-append">
                 <span class="input-group-text" id="basic-addon2">Apellido</span>
               </div>
-              <input type="text" class="form-control" placeholder="Escriba su apellido"
-                aria-label="Recipient's username" aria-describedby="basic-addon2">              
+              <input id="apellido" readonly type="text" class="validar form-control" placeholder="Escriba su apellido"
+                aria-label="Recipient's username" aria-describedby="basic-addon2" required> 
+                <div class="valid-feedback">Valido.</div>
+                <div class="invalid-feedback">Invalido.</div>             
             </div>
 
             <label for="basic-url">Contacto:</label>
@@ -112,17 +119,23 @@
               <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon3">Email</span>
               </div>
-              <input type="text" class="form-control" id="basic-url" placeholder="Escriba su email" aria-describedby="basic-addon3">
+              <input readonly type="text" class="validar form-control" id="email" placeholder="Escriba su email" aria-describedby="basic-addon3" required>
+              <div class="valid-feedback">Valido.</div>
+              <div class="invalid-feedback">Invalido.</div>
             </div>
 
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text">Cel</span>
               </div>
-              <input type="text" class="form-control" placeholder="Escriba su numero telefonico" aria-label="Amount (to the nearest dollar)">
+              <input readonly id="cel" type="number" class="validar form-control" placeholder="Escriba su numero telefonico" aria-label="Amount (to the nearest dollar)" required>
+              <div class="valid-feedback">Valido.</div>
+              <div class="invalid-feedback">Invalido.</div>
             </div>
+          </fieldset>
           </div>
-        </div>
+          <span id="editarfooter"></span>          
+        </div>        
       </div>
     </div>
   </div>
@@ -146,6 +159,7 @@
       <div></div>
     </div>
   </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous"></script>
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/dropzone.js"></script>
